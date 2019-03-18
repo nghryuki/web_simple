@@ -1,0 +1,35 @@
+{
+  "name": "web_simple",
+  "version": "1.0.0",
+  "description": "web simple template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nghryuki/web_simple.git"
+  },
+  "author": "nghryuki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nghryuki/web_simple/issues"
+  },
+  "homepage": "https://github.com/nghryuki/web_simple#readme",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "acorn": "^6.0.0",
+    "braces": "^2.3.2",
+    "browser-sync": "^2.26.3",
+    "del": "^4.0.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-pug": "^4.0.1",
+    "gulp-stylus": "^2.7.0",
+    "gulp-uglify": "^3.0.2",
+    "standard": "^12.0.1"
+  }
+}
