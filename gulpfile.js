@@ -58,7 +58,9 @@ function htmlCompile () {
     .pipe(plumber({
       errorHandler: notify.onError('Error: <%= error.message %>')
     }))
-    .pipe(pug())
+    .pipe(pug({
+      pretty: true
+    }))
     .pipe(gulp.dest('./debug'))
 }
 
@@ -82,5 +84,8 @@ function haha (cb) {
 }
 
 /* exports */
+exports.OutJS = gulp.series(jsTranspile)
+exports.OutCSS = gulp.series(cssTranspile)
+exports.OutHTML = gulp.series(htmlCompile)
 exports.default = gulp.series(cleanDebug, jsTranspile, cssTranspile, htmlCompile, browsersync, watch, haha)
 exports.release = gulp.series(cleanRelease, jsTranspile, cssTranspile, htmlCompile, haha)

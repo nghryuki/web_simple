@@ -1,4 +1,4 @@
-extends _layout
+extends ./includes/_layout.pug
 block var
   - metas = {}
   - metas.title = 'title'
@@ -8,7 +8,7 @@ block var
   - metas.description = 'description'
 block append meta
   +meta(metas)
-  include _inc_meta_facebook
+  include ./includes/_meta_facebook.pug
   +inc_meta_facebook(metas)
 block title
   title
