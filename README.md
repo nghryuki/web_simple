@@ -13,4 +13,4 @@ http://html5doctor.com/html-5-reset-stylesheet/
 ## TODO
 - reset.css にボーダーを内側にいれる設定を追加
 - debug, release の仕分けをちゃんと書く
-- Assetsが反映されるように
+- JSのエラーもgulp-notifyでとりたい
