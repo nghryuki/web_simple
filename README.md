@@ -11,7 +11,6 @@
 http://html5doctor.com/html-5-reset-stylesheet/
 
 ## TODO
-- browserfy 入れてJSの外部ファイル読み込みをする
 - reset.css にボーダーを内側にいれる設定を追加
 - debug, release の仕分けをちゃんと書く
 - Assetsが反映されるように
