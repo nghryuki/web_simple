@@ -1,8 +1,5 @@
-function test (cb) {
-  console.log('test')
-  cb()
-}
+const $ = require('jquery')
 
-test(() => {
-  console.log('callback')
+$(window).on('load', () => {
+  console.log('onload')
 })

@@ -2,16 +2,21 @@
 const gulp = require('gulp')
 const browserSync = require('browser-sync').create()
 const pug = require('gulp-pug')
-const babel = require('gulp-babel')
 const stylus = require('gulp-stylus')
 const plumber = require('gulp-plumber')
 const notify = require('gulp-notify')
+const sourcemaps = require('gulp-sourcemaps')
 const del = require('del')
+const browserify = require('browserify')
+const source = require('vinyl-source-stream')
+const buffer = require('vinyl-buffer')
+const uglify = require('gulp-uglify')
 
 /* startup server */
 function browsersync (cb) {
   browserSync.init({
     server: {
+      https: true,
       baseDir: './debug'
     }
   }, cb)
@@ -24,22 +29,42 @@ function reload (cb) {
 }
 
 function watch (cb) {
-  browserSync.watch(['./src/babel/**/*.es6'], gulp.series(jsTranspile, reload))
+  browserSync.watch(['./src/babel/**/*.es6'], gulp.series(jsTranspileDebug, reload))
   browserSync.watch(['./src/stylus/**/*.styl'], gulp.series(cssTranspile, reload))
   browserSync.watch(['./src/pug/**/*.pug'], gulp.series(htmlCompile, reload))
   cb()
 }
 
 /*  */
-function jsTranspile () {
-  return gulp.src(['./src/babel/**/*.es6', '!' + './src/babel/**/_*.es6'])
-    .pipe(plumber({
-      errorHandler: notify.onError('Error: <%= error.message %>')
-    }))
-    .pipe(babel({
-      presets: ['@babel/env']
-    }))
+function jsTranspileDebug () {
+  return browserify('./src/babel/main.es6', {
+    debug: true
+  })
+    .transform('babelify', {
+      presets: [
+        '@babel/preset-env',
+        '@babel/preset-react'
+      ]
+    })
+    .bundle()
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./debug/js'))
+}
+function jsTranspileRelease () {
+  return browserify('./src/babel/main.es6')
+    .transform('babelify', { presets: [
+      '@babel/preset-env',
+      '@babel/preset-react'
+    ] })
+    .bundle()
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
+    .pipe(uglify())
+    .pipe(gulp.dest('./release/js'))
 }
 
 /*  */
@@ -78,14 +103,9 @@ function cleanRelease () {
   ])
 }
 
-function haha (cb) {
-  console.log('hhh')
-  cb()
-}
-
 /* exports */
-exports.OutJS = gulp.series(jsTranspile)
+exports.OutJS = gulp.series(jsTranspileDebug)
 exports.OutCSS = gulp.series(cssTranspile)
 exports.OutHTML = gulp.series(htmlCompile)
-exports.default = gulp.series(cleanDebug, jsTranspile, cssTranspile, htmlCompile, browsersync, watch, haha)
-exports.release = gulp.series(cleanRelease, jsTranspile, cssTranspile, htmlCompile, haha)
+exports.default = gulp.series(cleanDebug, jsTranspileDebug, cssTranspile, htmlCompile, browsersync, watch)
+exports.release = gulp.series(cleanRelease, jsTranspileRelease, cssTranspile, htmlCompile)

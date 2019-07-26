@@ -17,19 +17,27 @@
   },
   "homepage": "https://github.com/nghryuki/web_simple#readme",
   "devDependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
-    "acorn": "^6.0.0",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "acorn": "^6.2.1",
+    "babelify": "^10.0.0",
     "braces": "^2.3.2",
-    "browser-sync": "^2.26.3",
-    "del": "^4.0.0",
-    "gulp": "^4.0.0",
-    "gulp-babel": "^8.0.0",
+    "browser-sync": "^2.26.7",
+    "browserify": "^16.3.0",
+    "del": "^4.1.1",
+    "gulp": "^4.0.2",
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.1",
     "gulp-pug": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.5",
     "gulp-stylus": "^2.7.0",
     "gulp-uglify": "^3.0.2",
-    "standard": "^12.0.1"
+    "standard": "^12.0.1",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1"
   }
 }
