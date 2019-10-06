@@ -5,6 +5,7 @@
 - Javascript Standard Style 準拠
 
 ## memo
+- パッケージのバージョンを上げた
 - minifyとかrelease用のファイルはdebugに生成されたファイルから生成するようにしよう
 
 ## reset.css
