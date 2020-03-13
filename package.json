@@ -20,7 +20,7 @@
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
-    "acorn": "^7.1.0",
+    "acorn": "^7.1.1",
     "babelify": "^10.0.0",
     "braces": "^3.0.2",
     "browser-sync": "^2.26.7",
