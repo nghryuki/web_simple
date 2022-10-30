@@ -23,7 +23,7 @@
     "acorn": "^7.1.0",
     "babelify": "^10.0.0",
     "braces": "^3.0.2",
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.10",
     "browserify": "^16.5.0",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
